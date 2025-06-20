@@ -1,9 +1,9 @@
 const TelegramBot = require('node-telegram-bot-api');
 
 // Replace 'YOUR_BOT_TOKEN_HERE' with your actual bot token
-const TOKEN = '7388123945:AAEPN-9cslWEua3ro7njPzNTJxE1N0MD8Js';
+const TOKEN = '';
 // Replace 'OWNER_USER_ID_HERE' with the Telegram user ID of the owner
-const OWNER_USER_ID = '5732310517';
+const OWNER_USER_ID = '';
 
 // Global variables to control the message sending loop and channels list
 let userRunningStatus = {};  // Object to store running status for each user
