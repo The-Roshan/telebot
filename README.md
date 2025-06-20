@@ -173,3 +173,171 @@ This project is licensed under the MIT License. See `LICENSE.md` for details.
 
 ## Contact
 Open an issue on GitHub for questions or feedback.
+
+
+
+
+
+
+
+# Telegram Bots Collection
+
+## Overview
+This repository contains five Telegram bots built with Python for various use cases: Personal Finance Tracker, Event Scheduler, Learning Flashcard, Recipe Sharing, and Task Manager. Each bot stores data in a private Telegram channel and uses inline buttons for interaction.
+
+## Bots
+
+### 1. Personal Finance Tracker Bot
+- **Purpose**: Track expenses and income, categorize transactions, and generate reports.
+- **Features**:
+  - Commands: `/start`, `/add_expense <amount> <category>`, `/add_income <amount> <source>`, `/stats`.
+  - Upload receipt images for automatic expense extraction (OCR).
+  - Inline buttons for adding transactions or viewing stats.
+- **Storage**: Transactions logged in a private channel.
+
+### 2. Event Scheduler Bot
+- **Purpose**: Organize events, create polls, and send reminders.
+- **Features**:
+  - Commands: `/start`, `/create_event <name> <date>`, `/list_events`.
+  - Inline buttons for RSVPs and event creation.
+- **Storage**: Event details stored in a private channel.
+
+### 3. Learning Flashcard Bot
+- **Purpose**: Study with digital flashcards, create decks, and take quizzes.
+- **Features**:
+  - Commands: `/start`, `/add_card <deck_name> <question> <answer>`, `/quiz <deck_name>`.
+  - Inline buttons for adding cards or showing quiz answers.
+- **Storage**: Flashcards stored in a private channel.
+
+### 4. Recipe Sharing Bot
+- **Purpose**: Share, search, and save recipes, with web scraping support.
+- **Features**:
+  - Commands: `/start`, `/add_recipe <name> <ingredients> <instructions>`, `/search_recipe <keyword>`.
+  - Send URLs to scrape recipes from websites.
+  - Inline buttons for adding or searching recipes.
+- **Storage**: Recipes stored in a private channel.
+
+### 5. Task Manager Bot
+- **Purpose**: Manage tasks with deadlines and assignments, with reminders.
+- **Features**:
+  - Commands: `/start`, `/add_task <description> <due_date>`, `/list_tasks`, `/done <task_id>`.
+  - Inline buttons for adding or listing tasks.
+  - Redis-backed reminders (requires Redis server).
+- **Storage**: Tasks stored in a private channel.
+
+## Prerequisites
+- **Python**: 3.10 or higher
+- **Telegram Account**: For bot and channel creation
+- **Bot Token**: From [@BotFather](https://t.me/BotFather)
+- **Channel ID**: Private Telegram channel for storage
+- **Admin IDs**: Telegram user IDs for admins
+- **Subscription Channel** (optional): For force-sub
+- **Additional**:
+  - Tesseract OCR for Finance Bot (install separately).
+  - Redis server for Task Bot reminders (install locally or use a hosted service).
+
+## Setup Instructions
+
+### 1. Create a Telegram Bot
+1. Chat with [@BotFather](https://t.me/BotFather).
+2. Send `/newbot`, follow prompts, and copy the **BOT_TOKEN**.
+
+### 2. Create a Private Channel
+1. Create a private Telegram channel.
+2. Add your bot as an admin with posting permissions.
+3. Get the channel ID using [@MissRose_bot](https://t.me/MissRose_bot) with `/id`.
+
+### 3. Get Admin IDs
+1. Send `/id` to [@MissRose_bot](https://t.me/MissRose_bot) in a private chat.
+2. Note IDs for admins (comma-separated in `.env`).
+
+### 4. Install Dependencies
+```bash
+pip install -r requirements.txt
+```
+- Install Tesseract OCR for Finance Bot (see [pytesseract docs](https://pypi.org/project/pytesseract/)).
+- Install and run Redis for Task Bot (`sudo apt-get install redis-server` on Ubuntu).
+
+### 5. Configure Environment Variables
+1. Copy `.env.example` to `.env`:
+   ```bash
+   cp .env.example .env
+   ```
+2. Edit `.env`:
+   ```
+   BOT_TOKEN=your_bot_token_here
+   DB_CHANNEL_ID=-1001234567890
+   ADMIN_IDS=123456789,987654321
+   SUBSCRIPTION_CHANNEL=@YourChannel
+   ```
+
+### 6. Run a Bot
+Navigate to the bot’s directory and run:
+```bash
+python bot.py
+```
+Replace `bot.py` with the specific bot file (e.g., `finance_bot.py`).
+
+## Project Structure
+```
+telegram-bots/
+├── finance_bot.py          # Personal Finance Tracker Bot
+├── event_bot.py           # Event Scheduler Bot
+├── flashcard_bot.py       # Learning Flashcard Bot
+├── recipe_bot.py          # Recipe Sharing Bot
+├── task_bot.py            # Task Manager Bot
+├── requirements.txt       # Shared dependencies
+├── .env.example           # Environment variables template
+├── LICENSE.md             # MIT License
+└── README.md             # This file
+```
+
+## Deployment
+- **Local/VPS**:
+  ```bash
+  tmux
+  python bot.py
+  ```
+- **Heroku**:
+  1. Create a Heroku app.
+  2. Set environment variables.
+  3. Push to Heroku:
+     ```bash
+     heroku git:push heroku main
+     ```
+- **Docker**:
+  ```dockerfile
+  FROM python:3.10-slim
+  WORKDIR /app
+  COPY . .
+  RUN pip install -r requirements.txt
+  CMD ["python", "bot.py"]
+  ```
+  ```bash
+  docker build -t telegram-bot .
+  docker run --env-file .env -d telegram-bot
+  ```
+  Replace `bot.py` with the desired bot file.
+
+## Notes
+- **File Size Limit**: 20MB for Telegram uploads (extend with local Bot API server).
+- **Data Persistence**: In-memory storage; use a database for production.
+- **Security**: Keep storage channels private.
+- **Customization**: Add features like subscription checks or admin commands.
+
+## License
+This project is licensed under the MIT License. See `LICENSE.md` for details.
+
+## Contributing
+1. Fork the repository.
+2. Create a feature branch (`git checkout -b feature/your-feature`).
+3. Commit changes (`git commit -m "Add your feature"`).
+4. Push to the branch (`git push origin feature/your-feature`).
+5. Open a pull request.
+
+## Acknowledgments
+- [python-telegram-bot](https://python-telegram-bot.readthedocs.io/)
+- Inspired by community-driven Telegram bot projects
+
+## Contact
+Open an issue on GitHub for questions or feedback.
