@@ -76,7 +76,7 @@ This is an advanced Telegram bot built with Python for storing files or URLs and
 
 ### 5. Clone the Repository
 ```bash
-git clone https://github.com/your-username/filestore-bot.git
+git clone https://The-Roshan/telebot.git
 cd filestore-bot
 ```
 
