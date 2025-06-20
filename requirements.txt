@@ -1,3 +1,4 @@
 python-telegram-bot==21.6
 requests==2.32.3
 python-dotenv==1.0.1
+pytesseract==0.3.13 # For Finance Bot OCR beautifulsoup4==4.12.3 # For Recipe Bot scraping redis==5.0.8 # For Task Bot reminders
