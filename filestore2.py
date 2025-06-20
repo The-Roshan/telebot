@@ -7,8 +7,8 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 logger = logging.getLogger(__name__)
 
 # Replace these with your actual bot token and channel chat ID
-BOT_TOKEN = '7462406196:AAFXdCHylU-JGT8QzymI7vrN0-if-Z3dbjg'
-CHANNEL_ID = '-1001943585227'  # Private channel ID
+BOT_TOKEN = ''
+CHANNEL_ID = ''  # Private channel ID
 
 # Dictionary to store file_id for each user session
 file_storage = {}
