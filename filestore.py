@@ -7,8 +7,8 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 logger = logging.getLogger(__name__)
 
 # Your bot token and private channel ID
-BOT_TOKEN = '7462406196:AAFXdCHylU-JGT8QzymI7vrN0-if-Z3dbjg'
-CHANNEL_ID = '-1001943585227'  # Private channel ID
+BOT_TOKEN = ''
+CHANNEL_ID = ''  # Private channel ID
 
 # Function to handle incoming files
 def handle_file(update: Update, context):
